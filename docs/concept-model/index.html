@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LEGO sorter — concept model</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23ff7043'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>LEGO sorter — concept model</h1>
+      <span class="sub">Schematic visualization · not fabrication CAD</span>
+    </header>
+
+    <div class="layout">
+      <div class="viewport-wrap">
+        <canvas id="viewport"></canvas>
+        <div id="labels" aria-hidden="true"></div>
+        <div id="hud"></div>
+      </div>
+
+      <aside class="sidebar">
+        <section>
+          <h2>Camera</h2>
+          <div class="btn-row">
+            <button type="button" data-preset="iso">Isometric</button>
+            <button type="button" data-preset="front">Front</button>
+            <button type="button" data-preset="top">Top</button>
+          </div>
+        </section>
+
+        <section>
+          <h2>Display</h2>
+          <div class="checks">
+            <label><input id="toggle-labels" type="checkbox" checked /> Module labels</label>
+            <label><input id="toggle-flow" type="checkbox" checked /> Process flow</label>
+            <label class="stack">
+              Tilt plate
+              <select id="stage-tip">
+                <option value="level" selected>Level (imaging)</option>
+                <option value="scoop">Tip → scoop</option>
+                <option value="reject">Tip → unidentified</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section>
+          <h2>Modules</h2>
+          <div class="checks">
+            <label><input type="checkbox" data-module="hopper" checked /> C1 Rotary hoppers</label>
+            <label><input type="checkbox" data-module="conveyor" checked /> C2 Flat feed belt</label>
+            <label><input type="checkbox" data-module="scanChamber" checked /> C3 Light box (6″)</label>
+            <label><input type="checkbox" data-module="rebel" checked /> C4 ReBeL</label>
+            <label><input type="checkbox" data-module="bins" checked /> Bins</label>
+          </div>
+        </section>
+
+        <section>
+          <h2>Export</h2>
+          <div class="btn-row">
+            <button type="button" class="primary" id="btn-export">Download PNG (1920×1080)</button>
+          </div>
+          <p class="note" style="margin-top: 0.55rem">
+            Renders the current camera view without labels. Needs a local HTTP server (ES modules).
+          </p>
+        </section>
+
+        <section>
+          <h2>Legend</h2>
+          <ul class="legend">
+            <li><span class="swatch" style="background: #1a1a1a"></span> Rotary cylindrical hoppers (basically V2 style)</li>
+            <li><span class="swatch" style="background: #2a2d34"></span> Flat elevated feed belt + drop chute into light box</li>
+            <li><span class="swatch" style="background: #fafafa"></span> 6″ light box + dual-direction tilt plate</li>
+            <li><span class="swatch" style="background: #ff8f00"></span> Unidentified-parts bin (reject tip)</li>
+            <li><span class="swatch" style="background: #ffffff; border: 1px solid #889"></span> igus ReBeL 6DOF — Ø180 mm / 664 mm reach</li>
+            <li><span class="swatch" style="background: #1565c0"></span> Bins — vertical stacks (~140×130×160 mm)</li>
+          </ul>
+        </section>
+
+        <p class="note">
+          Hybrid fidelity: belt/chamber dims from plans; robot pose &amp; spacing are conceptual.
+          See <a href="./README.md">README</a> for launch and GLB replacement notes.
+        </p>
+      </aside>
+    </div>
+
+    <script type="module" src="./viewer.js"></script>
+  </body>
+</html>

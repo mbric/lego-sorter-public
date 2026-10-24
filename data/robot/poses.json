@@ -1,0 +1,19 @@
+{
+  "home": null,
+  "rest": null,
+  "bins": {
+    "blue": {},
+    "green": {},
+    "red": {},
+    "unknown": {},
+    "yellow": {}
+  },
+  "defaults": {
+    "joint_vel_pct": 20.0,
+    "settle_tol_deg": 0.5,
+    "cart_nudge_mm": 10.0,
+    "joint_nudge_deg": 3.0,
+    "dump_hold_s": 0.4,
+    "override_pct": 20.0
+  }
+}

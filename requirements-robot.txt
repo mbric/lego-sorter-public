@@ -1,0 +1,6 @@
+# igus ReBeL / CRI control (Mac development). Install after robot is reachable on LAN.
+#   pip install -r requirements-robot.txt
+#
+# Source install — PyPI package name may differ; upstream repo is authoritative.
+git+https://github.com/CommonplaceRobotics/CRI-Python-Lib.git
+python-dotenv>=1.0.0

@@ -1,0 +1,31 @@
+.venv/
+*.egg-info/
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+
+data/raw/
+data/processed/
+data/sessions/
+data/exports/
+data/captures/
+data/reference/
+data/bricklink_cache.json
+data/parts_catalog/
+models/
+
+.env
+
+# Conveyor WiFi credentials (copy from wifi_secrets.h.example)
+src/feeder/firmware/feeder/wifi_secrets.h
+
+*.keras
+*.h5
+
+.gradio/
+
+# Concept-model OpenSCAD export artifacts (regenerate via scad/README.md)
+docs/concept-model/scad/*.stl
+docs/concept-model/scad/modules/*.stl
+
